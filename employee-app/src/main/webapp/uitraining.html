@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<script type="text/javascript">
+		function sayHello()
+		{
+			var name =document.getElementById("name").value;
+			alert ("Name: " + name);
+			calculateSalary(printSalary);
+
+		}
+		function calculateSalary(xyzFunction)
+		{
+			var age =document.getElementById("age").value;
+			var salary = 2* age;
+			xyzFunction(salary);
+
+		}
+		function printSalary(salary)
+		{
+			console.info("the salary is "+ salary);
+		}
+		function getEmployee(){
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = processRequest;
+			xhttp.open("GET", "http://localhost:9000/employee/api", true);
+			xhttp.send();
+		}
+		function processRequest(){
+			if(this.status==200)
+			{
+				console.log(this.resoponseText);
+			}
+			else
+			{
+				console.log("network error");
+			}
+		}
+	</script>
+</head>
+<body>
+hello world this is navneet
+<form>
+	Name: <input type="text" id="name" name="name"><br>
+	Id: <input type="text" name="id"><br>
+	Age: <input type="text" id="age"name="age"><br>
+	<button type="Submit">Go</button>
+</form>
+<button onclick="sayHello()"> say hello</button>
+<button on click="getEmployee()">get employee</button>
+</body>
+</html>
